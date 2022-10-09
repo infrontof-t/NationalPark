@@ -21,6 +21,7 @@ from locationApp import views
 
 
 urlpatterns = [
+    path('member/', include('memberApp.urls')),
     path('admin/', admin.site.urls),
     path('park/', include('parkapp.urls')),
     path('loc/', include('locationApp.urls')),

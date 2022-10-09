@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'memberApp',
     'locationApp',
     'parkapp',
     'django.contrib.admin',
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'mydb',
+'NAME': 'miniProject',
 'USER': 'root',
 'PASSWORD': '1234',
 'HOST': '127.0.0.1',
@@ -118,9 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -134,10 +137,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/",
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/member/login/'
+LOGOUT_REDIRECT_URL = '/member/login/'
