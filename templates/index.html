@@ -15,10 +15,9 @@
     </head>
     <body>
         <!-- Header - set the background image for the header in the line below-->
-        <header class="py-5 bg-image-full" style="background-image: url('https://d1blyo8czty997.cloudfront.net/tour-photos/1834/1200x600/6039593377.jpg')">
-            {% block content %}
-            {% endblock %}
-        </header>
+        {% block content %}
+        {% endblock %}
+        
 
 {% block nav %}
 {% endblock %}
@@ -30,7 +29,7 @@
 {% endblock %}      
         
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-dark" style="clear:both;">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; 김정기 박준영 유희승 이대겸 한나겸</p></div>
         </footer>
         <!-- Bootstrap core JS-->

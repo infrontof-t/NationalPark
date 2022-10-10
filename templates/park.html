@@ -2,11 +2,15 @@
 
 
 {% block content %}
-<div class="text-center my-5">
-    <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
-    <h1 class="text-white fs-3 fw-bolder">{{ park.park_name }}</h1>
-    <p class="text-white-50 mb-0"></p>
-</div>
+{% comment %} <header class="py-10 bg-image-full" style="background-image: url('https://img.khan.co.kr/news/2017/09/06/2017090601000718400055081.jpg');height:400px;"> {% endcomment %}
+<header class="py-10 bg-image-full" style="background-image: url('{{ park.park_background}}');height:400px;">
+    <div class="text-center my-5">
+        <!-- <img class="img-wrapper rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." /> -->
+        {% comment %} <img class="img-fluid rounded-circle mb-4" src="{{park.park_pic}}" alt="..." /> {% endcomment %}
+        <h1 class="text-white fs-3 fw-bolder">{{ park.park_name }}</h1>
+        <p class="text-white-50 mb-0"></p>
+    </div>
+</header>
 {% endblock %}
 
 
@@ -23,5 +27,22 @@
 
 
 {% block context %}
-<a href="">공원 위치정보 : {{park.park_latitude}}, {{park.park_longitude}}</a>
+        <div style="display:flex;padding:10px;">
+            <div class="text-center my-5" id="parkpicture" style="padding:5px;height:auto;width:720px;display:flex;">
+                <img src="{{ park.park_pic }}" alt="park_pic" style="max-width:680px;max-height:100%;" />
+                <!-- <h2>{{park.park_name}}</h2><br> -->
+            </div>
+            <div class="text-start my-5" id="information" style="padding:5px;height:auto;width:720px;float:left;">
+                <h2>{{park.park_name}}</h2><br>
+                <a>{{park.park_info}}</a><br><br>
+                <a>공원 소재지 : {{park.park_address}}</a>
+                <button id="to_map" href="http://127.0.0.1:8000/loc/map/state/create/">지도</button><br>
+                <a>공원 전화번호 : {{park.park_tel}}</a><br>
+                <!-- <button onclick="location.href='{{ park.park_url }}'">홈페이지</button> -->
+                <a>공원 홈페이지 : </a>
+                <a href="{{park.park_url}}" target="blank">{{park.park_url}}</a>
+                <!-- <a>공원 위치정보 : </a>
+                <a href="">{{park.park_latitude}}, {{park.park_longitude}}</a> -->
+            </div>
+        </div>
 {% endblock %}

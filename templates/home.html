@@ -2,11 +2,13 @@
 
 
 {% block content %}
-<div class="text-center my-5">
-    <img class="img-fluid rounded-circle mb-4" src="https://pbs.twimg.com/media/DVT7yQBVQAAA6xj.jpg" alt="..." style=" width: 250px;"/>
-    <h1 class="text-white fs-3 fw-bolder">Welcome</h1>
-    <p class="text-white-50 mb-0"></p>
-</div>
+<header class="py-5 bg-image-full" style="background-image: url('https://d1blyo8czty997.cloudfront.net/tour-photos/1834/1200x600/6039593377.jpg')">
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder">{{ park.park_name }}</h1>
+        <p class="text-white-50 mb-0"></p>
+    </div>
+</header>
 {% endblock %}
 
 

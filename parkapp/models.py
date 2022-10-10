@@ -13,6 +13,12 @@ class Park(models.Model):
     park_name = models.CharField(max_length=100)
     park_latitude = models.FloatField()
     park_longitude = models.FloatField()
+    park_address = models.CharField(max_length=100)
+    park_tel = models.CharField(max_length=45)
+    park_info = models.CharField(max_length=500)
+    park_background = models.CharField(max_length=200)
+    park_pic = models.CharField(max_length=200)
+    park_url = models.CharField(max_length=200)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
 
     class Meta:

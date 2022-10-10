@@ -22,6 +22,7 @@ import config.views as views
 
 
 urlpatterns = [
+    path('member/', include('memberApp.urls')),
     path('admin/', admin.site.urls),
     path('', views.mainpage),
 

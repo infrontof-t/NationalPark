@@ -612,6 +612,16 @@ progress {
   height: auto;
 }
 
+.img-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(150, 150);
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: auto;
+}
+
 .figure {
   display: inline-block;
 }
@@ -7492,6 +7502,11 @@ textarea.form-control-lg {
 
 .py-5 {
   padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.py-10 {
+  padding-top: 9rem !important;
   padding-bottom: 3rem !important;
 }
 
