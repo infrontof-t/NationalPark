@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<header class="py-5 bg-image-full" style="background-image: url('https://d1blyo8czty997.cloudfront.net/tour-photos/1834/1200x600/6039593377.jpg')">
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder">{{ park.park_name }}</h1>
+        <p class="text-white-50 mb-0"></p>
+    </div>
+</header>
+{% endblock %}
+
+
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/park/home">HOME</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/park/park_list/">공원</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/loc/map/{{state.id}}">MAP</a>
+        <a class="navbar-brand" href="#!">CONTACT</a>
+    </div>
+</nav>
+{% endblock %}
+
+
+{% block map %}
+<div class="jumbotron">
+    <div class="container text-center">
+        <div id="map" style="width:500px; height:400px; margin:0 auto;"></div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=<APIkey>&callback=initMap"></script>
+<script type="text/javascript">
+// This example displays a marker at the center of Australia.
+// When the user clicks the marker, an info window opens.
+function initMap() {
+  const latlng = { lat:35.8237, lng:128.12 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 6,
+    center: latlng,
+  });
+
+////////////////////////////////////////////////////////////////////////////////////
+$.ajax({
+            url: '/loc/state/',
+
+            success: function (res) {
+                
+                for (var i = 0; i < res.length; i++) {
+                    var marker = new google.maps.Marker({
+                        position: {lat : res[i].park_latitude, lng: res[i].park_longitude },
+                        map,
+                        title: res[i].title,
+                        clickable: true
+                    });
+
+                    let contentString =  res[i].id + '.' +res[i].park_name
+    
+                    let infowindow = new google.maps.InfoWindow({
+                        content: contentString,
+                    });
+
+                    marker.addListener("mouseover",makeOverListener(map,marker,infowindow))
+
+                    marker.addListener("mouseout", () =>{
+                        infowindow.close()
+                    })
+
+                    marker.addListener("click", makeClickListener(infowindow.getContent()) )
+                }
+
+                // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+                    function makeOverListener(map, marker, infowindow) {
+                    return function() {
+                            infowindow.open({
+                            anchor: marker,
+                            map,
+                            shouldFocus: false,
+                            });
+                    }
+                }
+
+                function makeClickListener(content){
+                    return () =>{
+                        const str = content
+                        const regex = /[^0-9]/g;
+                        const result = str.replace(regex, "");
+                        const number = parseInt(result);
+                        console.log(number)
+                        window.location.href = `http://127.0.0.1:8000/loc/map/facility/${number}`
+                    };
+                }
+      }
+    })
+}
+     
+window.initMap = initMap;
+</script>
+{% endblock %}
