@@ -22,11 +22,11 @@ import config.views as views
 
 
 urlpatterns = [
-    path('member/', include('memberApp.urls')),
-    path('admin/', admin.site.urls),
     path('', views.mainpage),
+    path('admin/', admin.site.urls),
+    path('member/', include('memberApp.urls')),
+    path('contact/', include('contact.urls')),
 
     path('park/', include('parkapp.urls')),
     path('loc/', include('locationApp.urls')),
-    path('contact/', include('contact.urls')),
 ]
