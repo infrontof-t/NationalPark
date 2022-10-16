@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
 import smtplib
 from email.mime.text import MIMEText
 
@@ -16,11 +17,10 @@ def contact(request):
 # SSL : smtplib.SMTP_SSL() | 포트 465
 # SMPT 객체를 생성한 후에는 stmp.ehlo()
 # 이후 TLS인 경우에는 starttls() 실행
-def send_mail(to_email, from_email, msg):
+def send_mail(from_email, to_email, msg):
     # SMTP 설정 - SSL
-    smtp = smtplib.SMTP_SSL('stmp.gmail.com', 465)
-    smtp.ehlo()
-    smtp.starttls()
+    # smtp = smtplib.SMTP(host='stmp.gmail.com')
+    smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     # 인증정보 설정
     smtp.login(from_email, 'cofcuqsulcxfvjxu')
     msg = MIMEText(msg)
