@@ -52,7 +52,7 @@ def state2(request):
     for d in data:
         d = model_to_dict(d)  
         dist = distance(float(lat), float(lng), d['park_latitude'], d['park_longitude'])
-        if(dist <= 10000):  # 100km 이내의 장소만 응답결과로 저장
+        if(dist <= 10000):  # 100km 이내의 장소만 응답결과로 저장 (10m 단위)
             map_list.append(d)
     return JsonResponse(map_list,safe=False)
 
@@ -64,7 +64,7 @@ def stateMain(request):
     for d in data:
         d = model_to_dict(d)  
         dist = distance(float(lat), float(lng), d['lat'], d['lng'])
-        if(dist <= 10000):  # 100km 이내의 장소만 응답결과로 저장
+        if(dist <= 10000):  # 100km 이내의 장소만 응답결과로 저장 (10m 단위)
             map_list.append(d)
     return JsonResponse(map_list,safe=False)
 
