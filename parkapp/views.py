@@ -15,7 +15,7 @@ def home(request):
 def region(request, id):
     region = Region.objects.get(id = id)
     park_list = Park.objects.filter(region_id = id)
-    data = state.objects.get(id = id)
+    data = Region.objects.get(id = id)
     context  = {
         'region' : region,
         'pList' : park_list,

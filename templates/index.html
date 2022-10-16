@@ -15,6 +15,19 @@
     </head>
     <body>
         <!-- Header - set the background image for the header in the line below-->
+        <header class="top-header">
+            <nav class="lognav bg-dark" style="text-align:right">
+                <!-- <ul style="text-align:right"> -->
+                    <button class="login bg-dark"><a href="http://127.0.0.1:8000/member/login/" style="color:white">
+                        로그인
+                    </a></button>
+                    <button class="signup bg-dark"><a href="http://127.0.0.1:8000/member/signup/" style="color:white">
+                        회원가입
+                    </a></button>
+                <!-- </ul> -->
+            </nav>
+        </header>
+
         {% block content %}
         {% endblock %}
         

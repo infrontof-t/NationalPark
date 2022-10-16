@@ -11307,3 +11307,31 @@ textarea.form-control-lg {
   background-position: center;
   background-size: cover;
 }
+
+.lognav {
+  background-color: rgb(33, 37, 41);
+  color: black;
+  float: right;
+  width: 100% ;
+  /* height: 30px; */
+}
+
+.login {
+  background-color: rgb(33, 37, 41);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  margin-right: 5px;
+
+}
+
+.signup {
+  background-color: rgb(33, 37, 41);
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.top-header {
+  width: 100%;
+}

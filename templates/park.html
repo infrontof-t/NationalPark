@@ -28,15 +28,15 @@
 
 {% block context %}
         <div style="display:flex;padding:10px;">
-            <div class="text-center my-5" id="parkpicture" style="padding:5px;height:auto;width:720px;display:flex;">
-                <img src="{{ park.park_pic }}" alt="park_pic" style="max-width:680px;max-height:100%;" />
+            <div class="text-center my-5" id="parkpicture" style="padding:5px;height:auto;width:720px;display:flex;justify-content:center;">
+                <img src="{{ park.park_pic }}" alt="park_pic" style="text-align:center;width:500px;max-height:80%;" />
                 <!-- <h2>{{park.park_name}}</h2><br> -->
             </div>
             <div class="text-start my-5" id="information" style="padding:5px;height:auto;width:720px;float:left;">
                 <h2>{{park.park_name}}</h2><br>
                 <a>{{park.park_info}}</a><br><br>
                 <a>공원 소재지 : {{park.park_address}}</a>
-                <button id="to_map" href="http://127.0.0.1:8000/loc/map/state/create/">지도</button><br>
+                <button href="http://127.0.0.1:8000/loc/map/state/create/">지도</button><br>
                 <a>공원 전화번호 : {{park.park_tel}}</a><br>
                 <!-- <button onclick="location.href='{{ park.park_url }}'">홈페이지</button> -->
                 <a>공원 홈페이지 : </a>
