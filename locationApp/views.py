@@ -11,16 +11,17 @@ from locationApp.models import *
 
 def getState(request):
     data = test.objects.all()
-
+    lat = request.GET.get('park_latitude')
+    lng = request.GET.get('park_longitude')
     map_list = []
     for d in data:
-        # 모델에서 받아온 데이터를 dictionary 화
-        d = model_to_dict(d)  
-        # 배열에 저장
-        map_list.append(d)
+      # 모델에서 받아온 데이터를 dictionary화
+      d = model_to_dict(d)
+      dist = distance(float(lat), float(lng), d['park_latitude'], d['park_longitude'])
+      if (dist <= 10000):   # 100km 이내의 장소만 응답결과로 저장(10m 단위)
+        map_list.append(d)  # 배열에 저장
     # json으로 넘겨줌
-    return JsonResponse(map_list,safe=False)
-
+    return JsonResponse(map_list, safe=False)
 
 
 
